@@ -9,6 +9,7 @@ var GAP_TEXT = 16;
 var gapCOLUMNS = CLOUD_Y + 3 * GAP_TEXT + 3 * GAP;
 var COLUMN_WIDTH = 40;
 var COLUMN_HEIGHT = 150;
+var COLUMN_INDENT = 50;
 
 var random_rgb = function(){
     return 'rgb(0, 0, 255, ' + Math.random() + ')';
@@ -49,10 +50,10 @@ window.renderStatistics = function(ctx, names, times) {
     } else {
       ctx.fillStyle = random_rgb();
     }
-    ctx.fillRect(CLOUD_X + GAP + (GAP + COLUMN_WIDTH) * i, COLUMN_HEIGHT + gapCOLUMNS - (COLUMN_HEIGHT * times[i]) / maxTime, COLUMN_WIDTH, (COLUMN_HEIGHT * times[i]) / maxTime);
+    ctx.fillRect(CLOUD_X + GAP + (COLUMN_INDENT + COLUMN_WIDTH) * i, COLUMN_HEIGHT + gapCOLUMNS - (COLUMN_HEIGHT * times[i]) / maxTime, COLUMN_WIDTH, (COLUMN_HEIGHT * times[i]) / maxTime);
     ctx.fillStyle = '#000';
-    ctx.fillText(Math.round(times[i]), CLOUD_X + GAP + (GAP + COLUMN_WIDTH) * i, COLUMN_HEIGHT + gapCOLUMNS - (COLUMN_HEIGHT * times[i]) / maxTime - GAP_TEXT);
-    ctx.fillText(names[i], CLOUD_X + GAP + (GAP + COLUMN_WIDTH) * i, gapCOLUMNS + COLUMN_HEIGHT + GAP);
+    ctx.fillText(Math.round(times[i]), CLOUD_X + GAP + (5*GAP + COLUMN_WIDTH) * i, COLUMN_HEIGHT + gapCOLUMNS - (COLUMN_HEIGHT * times[i]) / maxTime - GAP_TEXT);
+    ctx.fillText(names[i], CLOUD_X + GAP + (COLUMN_INDENT + COLUMN_WIDTH) * i, gapCOLUMNS + COLUMN_HEIGHT + GAP);
   }
 };
 
